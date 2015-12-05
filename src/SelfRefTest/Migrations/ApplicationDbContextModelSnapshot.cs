@@ -166,9 +166,6 @@ namespace SelfRefTest.Migrations
 
                     b.Property<int?>("ParentId");
 
-                    b.Property<int?>("ParentId1")
-                        .IsRequired();
-
                     b.HasKey("Id", "CategoryId");
                 });
 
@@ -213,7 +210,7 @@ namespace SelfRefTest.Migrations
                     b.HasOne("SelfRefTest.Models.Term")
                         .WithMany()
                         .HasForeignKey("ParentId")
-                        .HasPrincipalKey("ParentId1");
+                        .HasPrincipalKey("Id");
                 });
         }
     }

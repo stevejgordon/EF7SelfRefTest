@@ -8,8 +8,8 @@ using SelfRefTest.Models;
 namespace SelfRefTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20151204092814_CategoriesAndTerms")]
-    partial class CategoriesAndTerms
+    [Migration("20151205164238_Terms")]
+    partial class Terms
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -167,9 +167,6 @@ namespace SelfRefTest.Migrations
 
                     b.Property<int?>("ParentId");
 
-                    b.Property<int?>("ParentId1")
-                        .IsRequired();
-
                     b.HasKey("Id", "CategoryId");
                 });
 
@@ -214,7 +211,7 @@ namespace SelfRefTest.Migrations
                     b.HasOne("SelfRefTest.Models.Term")
                         .WithMany()
                         .HasForeignKey("ParentId")
-                        .HasPrincipalKey("ParentId1");
+                        .HasPrincipalKey("Id");
                 });
         }
     }

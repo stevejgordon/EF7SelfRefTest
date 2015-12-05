@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 
 namespace SelfRefTest.Models
@@ -23,6 +19,7 @@ namespace SelfRefTest.Models
                 .HasOne(x => x.Parent)
                 .WithMany(x => x.Children)
                 .HasForeignKey(x => x.ParentId)
+                .HasPrincipalKey(x => x.Id)
                 .IsRequired(false);
         }
     }
